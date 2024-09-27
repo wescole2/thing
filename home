@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Homepage</title>
+  <style>
+    /* Basic page styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Light and Dark Mode Background Colors */
+    body.light-mode {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    body.dark-mode {
+      background-color: #2c2c2c;
+      color: #fff;
+    }
+
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Dark mode header color */
+    body.dark-mode header {
+      background-color: #444444;
+    }
+
+    /* Scroll Button Styles */
+    .scroll-btn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Button styles for dark mode */
+    body.dark-mode .scroll-btn {
+      background-color: #ff7f50;
+    }
+
+    /* Simple content to make the page scrollable */
+    .content {
+      margin-top: 120px;
+      padding: 20px;
+      height: 2000px; /* Adds scrollable height */
+    }
+  </style>
+</head>
+<body class="light-mode">
+  
+  <!-- Header -->
+  <header>
+    <h1>Welcome to My Homepage</h1>
+  </header>
+
+  <!-- Content Section -->
+  <div class="content">
+    <p>Scroll down to see more content and enable the dark mode toggle button!</p>
+    <p>This page demonstrates a light/dark mode switcher activated by scrolling down.</p>
+    <!-- Add more content here as needed -->
+  </div>
+
+  <!-- Button to toggle dark mode -->
+  <button class="scroll-btn" id="toggleMode">Switch to Dark Mode</button>
+
+  <script>
+    // Toggle between Light and Dark Mode
+    const toggleModeBtn = document.getElementById('toggleMode');
+    const body = document.body;
+
+    // Show button after scrolling down
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        toggleModeBtn.style.display = 'block';
+      } else {
+        toggleModeBtn.style.display = 'none';
+      }
+    });
+
+    // Change between light mode and dark mode when button is clicked
+    toggleModeBtn.addEventListener('click', function() {
+      if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        toggleModeBtn.textContent = 'Switch to Light Mode';
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        toggleModeBtn.textContent = 'Switch to Dark Mode';
+      }
+    });
+  </script>
+
+</body>
+</html>
